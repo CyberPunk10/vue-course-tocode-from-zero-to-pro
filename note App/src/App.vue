@@ -1,5 +1,4 @@
 <template>
-<div id="app">
   <div class="wrapper">
     <div class="wrapper-content">
       <section>
@@ -28,7 +27,6 @@
         </div>
       </section>
     </div>
-  </div>
   </div>
 </template>
 
