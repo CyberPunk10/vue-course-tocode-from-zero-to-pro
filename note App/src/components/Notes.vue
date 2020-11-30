@@ -3,7 +3,7 @@
     <div class="note" :class="{full: !grid}" v-for="(note, index) in notes" :key="index">
       <div class="note-header">
         <p>{{ note.title }}</p>
-        <p class="close" style="cursor: pointer;" @click="removeNote(index)">+</p>
+        <p class="close" style="cursor: pointer;" @click="removeNote(index)">×</p>
       </div>
       <div class="note-body">
         <p>{{ note.descr }}</p>
@@ -64,7 +64,6 @@ export default {
     color: #402caf
     font-size: 22px
   p.close
-    transform: rotate(45deg)
     font-size: 32px
   svg
     margin-right: 12px
