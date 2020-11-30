@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://unpkg.com/vue"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h1>{{ title }}</h1>
+    <input v-model="name" type="text">
+    <input v-model="email" type="email">
+    <button @click="getText">Get text to console</button>
+    <p><span>(After click)</span> NAME: {{ nameUpper }}</p>
+    <p><span>(camputed)</span>  NAME: {{ nameX2 }}</p>
+    <p><span>(v-model, current input)</span> Email: {{ email }}</p>
+
+    <hr>
+
+    <input v-model="showContent1" type="checkbox" id="checkbox-1">
+    <label style="user-select: none;" for="checkbox-1">Показать контент 1</label>
+    <span v-if="showContent1">Content 1</span>
+
+    <hr>
+
+    <button @click="showContent2 = !showContent2">Показать контент 2</button>
+    <span v-if="showContent2">Content 2</span>
+
+    <hr>
+
+    <button @click="getContent">Показать контент 3</button>
+    <span v-if="showContent3">Content 3</span>
+
+  </div>
+
+<script>
+ var app = new Vue({
+   el: '#app',
+   data: {
+     title: 'Vue Init',
+     name: '',
+     nameUpper: '',
+     email: '',
+     showContent1: false,
+     showContent2: false,
+     showContent3: false,
+   },
+   computed: {
+    nameX2() {
+      return this.name + ' -- ' + this.name
+    }
+   },
+   methods: {
+     getText() {
+      console.log('hello, ' + this.name)
+      this.nameUpper = this.name.toUpperCase()
+     },
+     getContent() {
+      this.showContent3 = !this.showContent3
+     }
+   }
+ })
+</script>
+
+</body>
+</html>
