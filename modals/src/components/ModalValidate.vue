@@ -4,31 +4,30 @@
     @close="$emit('close')"
   >
     <div slot="body">
-      <form @submit.prevent="">
+      <form @submit.prevent="onSubmit">
 
         <!-- name -->
-        <div class="form-group" :class="{ 'form-group--error': $v.name.$error }">
+        <div class="form-group">
           <label>Name:</label>
           <input 
-            v-model="name" 
             v-model.trim="$v.name.$model"
             :class="{error: $v.name.$error}"
             @change="$v.name.$touch()"
           >
           <p class="error-text" v-if="!$v.name.required">Field is required</p>
-          <p class="error-text" v-if="name < $v.name.minLength">error</p>
+          <p class="error-text" v-if="!$v.name.minLength">Name must have at least {{ $v.name.$params.minLength.min }} letters</p>
         </div>
 
         <!-- email -->
-        <div class="form-group" :class="{ 'form-group--error': $v.email.$error }">
+        <div class="form-group">
           <label>Email:</label>
           <input 
-            v-model="email" 
             v-model.trim="$v.email.$model"
             :class="{error: $v.email.$error}"
-            @change="$v.name.$touch()"
+            @change="$v.email.$touch()"
           >
-          <p class="error-text" v-if="!$v.email.required">error</p>
+          <p class="error-text" v-if="!$v.email.required">Field is required</p>
+          <p class="error-text" v-if="!$v.email.email">Email is not correct</p>
         </div>
 
         <button class="btn btnPrimary">Submit</button>
@@ -66,7 +65,30 @@ export default {
     // }
   },
   methods: {
-    
+    onSubmit() {
+      this.$v.$touch()
+      if (!this.$v.$invalid) {
+        const user = {
+          name: this.name,
+          email: this.email
+        }
+        console.log(user)
+      }
+    }
   }
 }
 </script>
+
+<style lang="sass">
+.form-group .error-text
+  display: none
+  margin-bottom: 5px
+  font-size: 13.4px
+  color: rgb(222,64,64)
+.form-group .error + .error-text
+  display: block
+input.error
+  margin-bottom: .4rem
+  border-color: rgb(222,64,64)
+
+</style>
