@@ -2,20 +2,24 @@
   <div class="wrapper-content wrapper-content--fixed">
     <section>
       <div class="container">
-        
-        <h1>Shop page</h1>
-
+        <h1 class="title">Shop page</h1>
+        <div class="item__wrapper">
+          <ShopItem
+            v-for="product in shopList" :key="product.id"
+            :product="product"
+          />
+        </div>
       </div>
     </section>
   </div>
 </template>
 
 <script>
-// import item from '@/components/ShopItem'
+import ShopItem from '../components/ShopItem'
 
 export default {
   components: {
-    // item
+    ShopItem
   },
   data () {
     return {
@@ -38,3 +42,10 @@ export default {
   }
 }
 </script>
+
+<style lang="sass">
+.item__wrapper
+  display: flex
+  justify-content: space-between
+  align-items: center
+</style>
