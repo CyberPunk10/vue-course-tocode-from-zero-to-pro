@@ -10,24 +10,29 @@
         <div class="form-group">
           <label>Name:</label>
           <input 
-            v-model.trim="$v.name.$model"
-            :class="{error: $v.name.$error}"
-            @change="$v.name.$touch()"
+            v-model.trim="name"
+            :class="{error: ($v.name.$dirty && !$v.name.required) 
+              || ($v.name.$dirty && !$v.name.minLength)}"
           >
-          <p class="error-text" v-if="!$v.name.required">Field is required</p>
-          <p class="error-text" v-if="!$v.name.minLength">Name must have at least {{ $v.name.$params.minLength.min }} letters</p>
+          <p class="error-text" v-if="$v.name.$dirty && !$v.name.required">
+            Field is required</p>
+          <p class="error-text" v-if="$v.name.$dirty && !$v.name.minLength">
+            Name must have at least {{ $v.name.$params.minLength.min }} letters. 
+            Сейчас: {{ name.length }}</p>
         </div>
 
         <!-- email -->
         <div class="form-group">
           <label>Email:</label>
           <input 
-            v-model.trim="$v.email.$model"
-            :class="{error: $v.email.$error}"
-            @change="$v.email.$touch()"
+            v-model.trim="email"
+            :class="{error: ($v.email.$dirty && !$v.email.required)
+              || ($v.email.$dirty && !$v.email.email)}"
           >
-          <p class="error-text" v-if="!$v.email.required">Field is required</p>
-          <p class="error-text" v-if="!$v.email.email">Email is not correct</p>
+          <p class="error-text" v-if="$v.email.$dirty && !$v.email.required">
+            Field is required</p>
+          <p class="error-text" v-if="$v.email.$dirty && !$v.email.email">
+            Email is not correct</p>
         </div>
 
         <button class="btn btnPrimary">Submit</button>
