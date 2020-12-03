@@ -1,0 +1,25 @@
+// Default table
+table {
+  width: 100%;
+  line-height: 1.5em;
+  border-collapse: separate;
+  border-spacing: 0 21px;
+  thead th {
+    padding: 20px 22px;
+    white-space: nowrap;
+    font-size: 22px;
+    cursor: pointer;
+  }
+  td {
+    padding: 20px;
+  }
+  tbody tr {
+    background-color: #fff;
+    transition: all .25s cubic-bezier(.02,.01,.47,1);
+    box-shadow: 0 30px 30px rgba(0,0,0,.02);
+    &:hover {
+      box-shadow: 0 15px 40px rgba(0,0,0,.06);
+      transition-delay: 0s !important;
+    }
+  }
+}
