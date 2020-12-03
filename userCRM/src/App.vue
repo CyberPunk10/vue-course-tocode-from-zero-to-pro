@@ -2,11 +2,6 @@
   <div class="wrapper">
     <header>
       <div class="navbar">
-        <div class="navbar-content">
-          <div class="logj">Vue-CLI</div>
-        </div>
-      </div>
-      <div class="navbar">
         <div class="container">
           <div class="navbar-content">
             <div class="logo">VUE CLI</div>
@@ -43,7 +38,8 @@ export default {
       links: [
         {title: 'Home', url: '/'},
         {title: 'Shop', url: '/shop'},
-        {title: 'Users', url: '/users'}
+        {title: 'Users', url: '/users'},
+        {title: 'Notify', url: '/notify'}
       ]
     }
   },
