@@ -37,6 +37,7 @@ export default {
     return {
       links: [
         {title: 'Home', url: '/'},
+        {title: 'ModalsPage', url: '/modalsPage'},
         {title: 'Shop', url: '/shop'},
         {title: 'Users', url: '/users'},
         {title: 'Notify', url: '/notify'},

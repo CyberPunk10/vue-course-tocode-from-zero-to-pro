@@ -12,6 +12,7 @@ import Product from '@/pages/Product'
 import Users from '@/pages/Users'
 import Notify from '@/pages/NotifyPage'
 import GitHubFinder from '@/pages/GitHubFinder'
+import ModalsPage from '@/pages/ModalsPage'
 
 // Routering
 export default new Router({
@@ -51,6 +52,11 @@ export default new Router({
       path: '/gitHubFinder',
       name: 'gitHubFinder',
       component: GitHubFinder
+    },
+    {
+      path: '/modalsPage',
+      name: 'modalsPage',
+      component: ModalsPage
     }
   ]
 })
