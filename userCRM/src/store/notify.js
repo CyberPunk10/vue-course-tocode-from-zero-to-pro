@@ -1,7 +1,9 @@
+import loadMore from '@/assets/js/loadMore'
+
 export default {
   state: {
     messages: [],
-    messagesMain: []
+    messagesMain: [],
   },
   mutations: {
     setMessages(state, payload) {
@@ -9,6 +11,9 @@ export default {
     },
     setMessagesMain(state, payload) {
       state.messagesMain = payload
+    },
+    loadMessages(state, payload) {
+      state.messagesMain = [...state.messagesMain, ...payload]
     }
   },
   actions: {
@@ -17,6 +22,10 @@ export default {
     },
     setMessagesMain({commit}, payload) {
       commit('setMessagesMain', payload)
+    },
+    loadMessages({commit, getters}) {
+      let res = getters.getFilterLoadMore
+      commit('loadMessages', loadMore(res))
     }
   },
   getters: {
@@ -26,8 +35,10 @@ export default {
     getMessagesMain (state) {
       return state.messagesMain
     },
-    // getUser: state => id => {
-    //   return state.users.find( user => user.id == id ) // type string and number!
-    // }
+    getFilterLoadMore (state) {
+      return state.messages.filter(mes => {
+        return mes.main === false
+      })
+    }
   }
 }

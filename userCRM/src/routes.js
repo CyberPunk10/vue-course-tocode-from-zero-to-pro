@@ -11,6 +11,7 @@ import Page404 from '@/pages/404'
 import Product from '@/pages/Product'
 import Users from '@/pages/Users'
 import Notify from '@/pages/NotifyPage'
+import GitHubFinder from '@/pages/GitHubFinder'
 
 // Routering
 export default new Router({
@@ -45,6 +46,11 @@ export default new Router({
       path: '/notify',
       name: 'notify',
       component: Notify
+    },
+    {
+      path: '/gitHubFinder',
+      name: 'gitHubFinder',
+      component: GitHubFinder
     }
   ]
 })

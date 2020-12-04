@@ -13,7 +13,10 @@
           <!-- content -->
           <div class="notify__content">
             <Preloader v-if="loading" :width="60" :heigth="60"/>
-            <Notify v-if="!loading" :messages="messages"/>
+            <div class="error" v-if="error">
+              <p>{{ error }}</p>
+            </div>
+            <Notify v-if="!loading && !error" :messages="messages"/>
           </div>
 
         </div>
@@ -35,6 +38,7 @@ export default {
   data () {
     return {
       loading: false,
+      error: null
     }
   },
   created() {
@@ -67,7 +71,10 @@ export default {
             this.$store.dispatch('setMessagesMain', messagesMain)
             this.$store.dispatch('setMessages', messages)
           })
-          .catch(err => console.log(err))
+          .catch(err => {
+            console.log(err)
+            this.error = 'Error: Network Error'
+          })
           .finally( () => this.loading = false)
     }
   }
@@ -79,7 +86,7 @@ export default {
   display: flex
   justify-content: center
   align-items: center
-  height: 90vh
+  height: 80vh
 
 .notify__wrapper
   width: 400px
