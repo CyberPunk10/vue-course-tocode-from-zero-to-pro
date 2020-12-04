@@ -33,6 +33,12 @@ export default {
 <style lang="scss" scoped>
 table {
   text-align: center;
+  border-spacing: 0 0;
+
+}
+tr, tr:hover {
+  background-color:none;
+  box-shadow: none;
 }
 td {
   display: flex;
