@@ -39,7 +39,8 @@ export default {
         {title: 'Home', url: '/'},
         {title: 'Shop', url: '/shop'},
         {title: 'Users', url: '/users'},
-        {title: 'Notify', url: '/notify'}
+        {title: 'Notify', url: '/notify'},
+        {title: 'GitHubFinder', url: '/gitHubFinder'}
       ]
     }
   },
