@@ -3,7 +3,7 @@
     <section>
       <div class="container">
         
-        <h1>GitHub Finder</h1>
+        <h1 class="title">GitHub Finder</h1>
 
         <Search 
           :value="search" 
